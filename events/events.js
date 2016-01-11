@@ -1,9 +1,15 @@
 (function() {
     var link = $('link');
-    $('button').click(function(){
-        var $this = $(this);
-        var stylesheet = $this.data('file');
+    $('button').on('click', function(){
+        var $this = $(this),
+            stylesheet = $this.data('file');
+
         link.attr('href', stylesheet + '.css');
-        $this.attr('disabled' , 'disabled');
+
+        $this
+            .siblings('button')
+                .removeAttr('disabled')
+                .end()
+                .attr('disabled', 'disabled')
     });
 })();
